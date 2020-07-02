@@ -24,6 +24,10 @@ Two or more lamps:
 - `bluez` (Debian) or `bluez-utils-compat` (AUR) Linux package **with `gatttool` utility**
 - started `bluetooth.service`
 
+## Credits
+
+This work is based on [this](https://github.com/praschak/candelapy) and [this](https://github.com/jonofe/candela_socket_server), but is more minimalistic and CLI-oriented.
+
 ## License
 
 MIT
