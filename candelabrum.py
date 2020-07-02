@@ -9,7 +9,7 @@ p = argparse.ArgumentParser()
 p.add_argument("--mac", "-m", type=str, help="Bluetooth MAC address of Yeelight Candela", action="extend", nargs="+", required=True)
 g = p.add_mutually_exclusive_group()
 g.add_argument("--intensity", "-i", type=int, help="Light intensity (0-100)", required=False)
-g.add_argument("--pulse", "-p", action="store_true", required=False)
+g.add_argument("--pulse", "-p", help="Enable pulse (flickering) mode", action="store_true", required=False)
 args = p.parse_args()
 
 for mac in args.mac:
