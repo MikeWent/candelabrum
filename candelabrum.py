@@ -6,15 +6,14 @@ import pygatt
 
 # get arguments from command line
 p = argparse.ArgumentParser()
-p.add_argument("--mac", "-m", type=str, help="Bluetooth MAC address of Yeelight Candela", action="extend", nargs="+", required=True)
+p.add_argument("--mac", "-m", help="Bluetooth MAC address of Yeelight Candela", type=str, action="extend", nargs="+", required=True)
 g = p.add_mutually_exclusive_group()
-g.add_argument("--intensity", "-i", type=int, help="Light intensity (0-100)", required=False)
+g.add_argument("--intensity", "-i", help="Light intensity (0-100)", type=int, required=False)
 g.add_argument("--pulse", "-p", help="Enable pulse (flickering) mode", action="store_true", required=False)
 args = p.parse_args()
 
 for mac in args.mac:
     # init bluetooth adapter
-    
     print(f"connecting to {mac}")
     try:
         adapter = pygatt.GATTToolBackend()
