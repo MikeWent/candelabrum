@@ -14,10 +14,11 @@ args = p.parse_args()
 
 for mac in args.mac:
     # init bluetooth adapter
-    adapter = pygatt.GATTToolBackend()
-    adapter.start()
+    
     print(f"connecting to {mac}")
     try:
+        adapter = pygatt.GATTToolBackend()
+        adapter.start()
         device = adapter.connect(mac)
     except Exception as e:
         print(f"unable to connect: {e}")
