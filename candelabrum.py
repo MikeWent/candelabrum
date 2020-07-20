@@ -27,23 +27,23 @@ for mac in args.mac:
         if args.intensity > 0 and args.intensity <= 100:
             print(f"set intensity: {args.intensity}")
             # turn candela on
-            device.char_write_handle(0x001f, bytearray([0x43, 0x40, 0x01]))
+            device.char_write_handle(0x001f, bytearray([0x43, 0x40, 0x01]), wait_for_response=False)
             # set light intensity
-            device.char_write_handle(0x001f, bytearray([0x43, 0x42, args.intensity]))
+            device.char_write_handle(0x001f, bytearray([0x43, 0x42, args.intensity]), wait_for_response=False)
         else:
             print("lamp off")
             # set zero light intensity
-            device.char_write_handle(0x001f, bytearray([0x43, 0x42, 0]))
+            device.char_write_handle(0x001f, bytearray([0x43, 0x42, 0]), wait_for_response=False)
             # turn candela off
-            device.char_write_handle(0x001f, bytearray([0x43, 0x40, 0x02]))
+            device.char_write_handle(0x001f, bytearray([0x43, 0x40, 0x02]), wait_for_response=False)
 
     if args.pulse:
         print("pulse on")
         # turn candela off
-        device.char_write_handle(0x001f, bytearray([0x43, 0x40, 0x02]))
+        device.char_write_handle(0x001f, bytearray([0x43, 0x40, 0x02]), wait_for_response=False)
         # turn candela on
-        device.char_write_handle(0x001f, bytearray([0x43, 0x40, 0x01]))
+        device.char_write_handle(0x001f, bytearray([0x43, 0x40, 0x01]), wait_for_response=False)
         # enable pulse mode
-        device.char_write_handle(0x001f, bytearray([0x43, 0x67, 0x02]))
+        device.char_write_handle(0x001f, bytearray([0x43, 0x67, 0x02]), wait_for_response=False)
 
-    device.disconnect()
+    adapter.stop()
